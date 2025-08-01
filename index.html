@@ -13,40 +13,48 @@
         <p class="Weather">Weather</p>
     </nav>
     <header>
-        <div class="status">
-            <p class="sentnce" >
+        <header>
+            <div class="status">
+              <p class="sentnce" >
                 <span>Heat...</span> Excessive heat warning in effect.take precautions to avoid
                 heat-related illness.
-            </p>
-            <p class="time">
-                Active:
-                14:00-20:00
-            </p>
-        </div>
-        <div class="city">
-            <div class="back">
-                <a class="map" href="map"><img src="image/location.png" alt="Map">New York,NY</a>
+              </p>
+              <p class="time">
+                Active: 14:00-20:00
+              </p>
             </div>
-             <span> <img class="clock" src="image/time.png" alt="Clock">06:58PM</span>
-            <div class="degres">
-                <h2>22°</h2>
-                <span id="status">clear sky</span>
-                <img src="image/sun.png" alt="sun">
-            <hr>
-            <p class="word1">humidity</p>
-            <p class="numbers1">65%</p>
-            <p class="word2">Visibilty</p>
-            <p class="numbers2">10km</p>
-            <p class="word3">wind</p>
-            <p class="numbers3">12 km/h</p>
-            <p class="word4">uv index</p>
-            <p class="numbers4">6</p>
+            <div class="city">
+              <div class="back">
+                <a class="map" href="#">
+                  <img src="image/location.png" alt="Map" class="city-name"> 
+                  <span class="city-name-text">--</span> 
+                </a>
+              </div>
+              <span>
+                <img class="clock" src="image/time.png" alt="Clock"> 
+                <span class="current-time">--:--</span> 
+              </span>
+              <div class="degres">
+                <h2 class="temperature">--</h2> 
+                <span class="description">clear sky</span> 
+                <img class="weather-icon" src="image/sun.png" alt="sun"> 
+                <hr>
+                <p class="word1">humidity</p>
+                <p class="numbers1 humidity">--%</p> 
+                <p class="word2">Visibilty</p>
+                <p class="numbers2 visibility">--km</p> 
+                <p class="word3">wind</p>
+                <p class="numbers3 wind"> km/h</p> 
+                <p class="word4">uv index</p>
+                <p class="numbers4 uv-index">--</p> 
+              </div>
             </div>
-        </div>
+          </header>
+          
        <!-- part2 -->
         <div class="search-container">
             <div class="input-wrapper">
-                <input type="text" placeholder="Search for a city">
+                <input type="text" placeholder="Search for a city" value="Casablanca">
             </div>
             <button type="submit">Search</button>
         </div>
@@ -99,8 +107,8 @@
             <div class="card7">
                 <p>7:00</p>
                 <img src="image/cloudy_running_sun.png" alt="cloudy_running_sun">
-                <p>22°</p>
-                <p>24%</p>
+                <p>--</p>
+                <p>--</p>
             </div>
             </div>
          </div>
@@ -222,6 +230,8 @@
             </ul>
         </div>
     </footer>
+    <script src="weather.js"></script>
+
     
 </body>
 </html>

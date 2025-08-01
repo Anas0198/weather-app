@@ -45,44 +45,54 @@ nav .logo{
 
 /* header */
 /* part1 */
-.status{
-    width: 800px;
-    min-height: 500px;
-    background-color: rgb(255, 254, 182);
-    border-radius: 10px;
-    margin: 20px auto;
-    outline:4px rgb(194, 175, 98) solid;
+.status {
+   width: 800px;
+   min-height: 500px;
+   background-color: rgb(255, 254, 182);
+   border-radius: 10px;
+   margin: 20px auto;
+   outline: 4px rgb(194, 175, 98) solid;
 }
-header .sentnce{
-    padding: 20px;
-    line-height: 1.5;
-    width: 60px;
-    color: rgb(75, 73, 73);
+
+header .sentnce {
+   padding: 20px;
+   line-height: 1.5;
+   width: 60px;
+   color: rgb(75, 73, 73);
 }
-header span{
-    font-weight: 700;
-    color: rgb(121, 59, 15)
+
+header span {
+   font-weight: 700;
+   color: rgb(121, 59, 15);
 }
-header .time{
-    color: sienna;
-    padding: 20px;
-    width: 60px;
+
+header .time {
+   color: sienna;
+   padding: 20px;
+   width: 60px;
 }
-@media(max-width:600px){
-   .status{
-      width: 80%;
-      padding: 15px;
-   }
-   header .sentnce,header .time{
-      width: 80%;
-      text-align: left;
-      font-size: 14px;
-   }
-   header span{
-      font-size: 15px;
+
+
+
+
+@media (max-width: 600px) {
+   .status {
+       width: 80%;
+       padding: 15px;
    }
 
+   header .sentnce,
+   header .time {
+       width: 80%;
+       text-align: left;
+       font-size: 14px;
+   }
+
+   header span {
+       font-size: 15px;
+   }
 }
+
 
 /* part 2*/
 .city{
