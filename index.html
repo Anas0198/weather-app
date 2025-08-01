@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HitRadio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <p class="logo">HR</p>
+        <h1>HitRadio</h1>
+        <p class="Weather">Weather</p>
+    </nav>
+    <header>
+        <div class="status">
+            <p class="sentnce" >
+                <span>Heat...</span> Excessive heat warning in effect.take precautions to avoid
+                heat-related illness.
+            </p>
+            <p class="time">
+                Active:
+                14:00-20:00
+            </p>
+        </div>
+        <div class="city">
+            <div class="back">
+                <a class="map" href="map"><img src="image/location.png" alt="Map">New York,NY</a>
+            </div>
+             <span> <img class="clock" src="image/time.png" alt="Clock">06:58PM</span>
+            <div class="degres">
+                <h2>22°</h2>
+                <span id="status">clear sky</span>
+                <img src="image/sun.png" alt="sun">
+            <hr>
+            <p class="word1">humidity</p>
+            <p class="numbers1">65%</p>
+            <p class="word2">Visibilty</p>
+            <p class="numbers2">10km</p>
+            <p class="word3">wind</p>
+            <p class="numbers3">12 km/h</p>
+            <p class="word4">uv index</p>
+            <p class="numbers4">6</p>
+            </div>
+        </div>
+       <!-- part2 -->
+        <div class="search-container">
+            <div class="input-wrapper">
+                <input type="text" placeholder="Search for a city">
+            </div>
+            <button type="submit">Search</button>
+        </div>
+        <!-- part 3 -->
+         <div class="news">
+            <h2>hourly forecast</h2>
+            <div class="card-container">
+            <div  class="card8">
+                <p>10:00</p>
+                <img src="image/sun.png" alt="sun">
+                <p>22°</p>
+                <p>65%</p>
+            </div>
+            <div class="card1">
+                <p>13:00</p>
+                <img src="image/cloudy_sun.png" alt="cloudy-sun">
+                <p>24°</p>
+                <p>65%</p>
+            </div>
+            <div class="card2">
+                <p>17:00</p>
+                <img src="image/sun_running.png" alt="sun_running">
+                <p>19°</p>
+                <p>30%</p>
+            </div>
+            <div class="card3">
+                <p>20:00</p>
+                <img src="image/storm.png" alt="storm">
+                <p>18°</p>
+                <p>60%</p>
+            </div>
+            <div class="card4">
+                <p>23:00</p>
+                <img src="image/cloudy(1)_moon.png" alt="cloudy(1)_moon">
+                <p>14°</p>
+                <p>14%</p>
+            </div>
+            <div class="card5">
+                <p>1:00</p>
+                <img src="image/cloud_moon.png" alt="cloud_moo">
+                <p>22°</p>
+                <p>10%</p>
+            </div>
+            <div class="card6">
+                <p>4:00</p>
+                <img src="image/cloud_moon.png" alt="cloud_moon">
+                <p>14°</p>
+                <p>24%</p>
+            </div>
+            <div class="card7">
+                <p>7:00</p>
+                <img src="image/cloudy_running_sun.png" alt="cloudy_running_sun">
+                <p>22°</p>
+                <p>24%</p>
+            </div>
+            </div>
+         </div>
+         <!-- part 4 -->
+          <div class="days">
+            <h2>7-day forecast</h2>
+            <div class="continer1">
+            <div class="day-c">
+                <img src="image/sun.png" alt="sun">
+                <div class="info">
+                <p id="num1">today</p>
+                <p id="status">clear sky</p>
+                </div>
+                <div class="temps">
+                <p>28°</p>
+                <p  id="status" >16°</p>
+                </div>
+            </div>
+            <div class="day-c">
+                <img src="image/cloudy_running_sun.png" alt="sun">
+                <div class="info">
+                    <p id="num1">today</p>
+                    <p id="status">clear sky</p>
+                    </div>
+                    <div class="temps">
+                    <p>28°</p>
+                    <p  id="status" >16°</p>
+                    </div>
+            </div>
+            <div class="day-c">
+                <img src="image/storm.png" alt="sun">
+                <div class="info">
+                    <p id="num1">today</p>
+                    <p id="status">clear sky</p>
+                    </div>
+                    <div class="temps">
+                    <p>28°</p>
+                    <p  id="status" >16°</p>
+                    </div>
+            </div>
+            <div class="day-c">
+                <img src="image/cloudy_running_sun.png" alt="sun">
+                <div class="info">
+                    <p id="num1">today</p>
+                    <p id="status">clear sky</p>
+                    </div>
+                    <div class="temps">
+                    <p>28°</p>
+                    <p  id="status" >16°</p>
+                    </div>
+            </div>
+            </div>
+            <hr>
+            <div class="weather">
+                <div class="weather-box">
+                <p id="status">sunrise</p>
+                <p>06:33</p>
+            </div>
+            <div class="weather-box">
+                <p id="status">sunset</p>
+                <p>19:42</p>
+            </div>
+            <div class="weather-box">
+                <p id="status">humidaty</p>
+                <p>90%</p>
+            </div>
+            <div class="weather-box">
+                <p id="status">wind</p>
+                <p>18km/h</p>
+            </div>
+            </div>
+            <div class="continer2">
+            <div class="day-c">
+                <img src="image/cloudy_sun.png" alt="sun">
+                <div class="info">
+                    <p id="num1">today</p>
+                    <p id="status">clear sky</p>
+                    </div>
+                    <div class="temps">
+                    <p>28°</p>
+                    <p id="status">16°</p>
+                    </div>
+            </div>
+            <div class="day-c">
+                <img src="image/sun.png" alt="sun">
+                <div class="info">
+                    <p id="num1">today</p>
+                    <p id="status">clear sky</p>
+                    </div>
+                    <div class="temps">
+                    <p>28°</p>
+                    <p id="status">16°</p>
+                    </div>
+            </div>
+            <div class="day-c">
+                <img src="image/sun.png" alt="sun">
+                <div class="info">
+                    <p id="num1">today</p>
+                    <p id="status">clear sky</p>
+                    </div>
+                    <div class="temps">
+                    <p>28°</p>
+                    <p id="status">16°</p>
+                    </div>
+            </div>
+            </div>
+
+          </div>
+    </header>
+    <footer>
+        <div class="sentnce">
+            <p>&copy 2025 HitRadio Weather. powered by Weather APIs</p>
+        </div>
+        <div >
+            <ul>
+                <li><a href="">Privacy</a></li>
+                <li><a href="">Terms</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+</body>
+</html>
