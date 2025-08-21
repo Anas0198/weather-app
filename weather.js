@@ -1,64 +1,102 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const apiKey = "fe09c2b3bd1d6251cfddc794805b9451";
-    const city = "Casablanca";
-  
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch weather data.");
-        }
-        return response.json();
-      })
-      .then(data => {
-        const container = document.querySelector(".city");
-  
-        container.querySelector(".city-name-text").textContent = data.name;
-        const now = new Date();
-        container.querySelector(".current-time").textContent = now.toLocaleTimeString();
-        container.querySelector(".temperature").textContent = `${Math.round(data.main.temp)}°`;
-        container.querySelector(".description").textContent = data.weather[0].description;
-        container.querySelector(".weather-icon").src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-        container.querySelector(".humidity").textContent = `${data.main.humidity}%`;
-        container.querySelector(".visibility").textContent = `${(data.visibility / 1000).toFixed(1)} km`;
-        container.querySelector(".wind").textContent = `${data.wind.speed} km/h`;
-        container.querySelector(".uv-index").textContent = "N/A";
-  
-        const { lat, lon } = data.coord;
-        return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,daily,alerts&appid=${apiKey}&units=metric`);
-      })
-      .then(response => {
-        if (!response.ok) throw new Error("Failed to fetch hourly forecast");
-        return response.json();
-      })
-      .then(data => {
-        const hoursData = data.hourly.slice(0, 8);
-        const cardClasses = ["card8", "card1", "card2", "card3", "card4", "card5", "card6", "card7"];
-        const container = document.querySelector(".news .card-container");
-  
-        hoursData.forEach((hour, index) => {
-          const card = container.querySelector(`.${cardClasses[index]}`);
-          if (!card) return;
-  
-          const date = new Date(hour.dt * 1000);
-          const hourStr = date.getHours().toString().padStart(2, "0") + ":00";
-  
-          const iconUrl = `https://openweathermap.org/img/wn/${hour.weather[0].icon}.png`;
-          const temp = Math.round(hour.temp);
-          const humidity = hour.humidity;
-  
-          const pElems = card.querySelectorAll("p");
-          const imgElem = card.querySelector("img");
-  
-          pElems[0].textContent = hourStr;
-          imgElem.src = iconUrl;
-          imgElem.alt = hour.weather[0].description;
-          pElems[2].textContent = `${temp}°`;
-          pElems[3].textContent = `${humidity}%`;
-        });
-      })
-      .catch(error => {
-        console.error("Error loading weather data:", error);
-        alert("lose");
-      });
-  });
-  
+
+function description(descri,num,time){
+  let des=document.querySelector('.des');
+  des.textContent=`${descri}...`;
+  let hour=document.querySelector('.time');
+  hour.innerHTML=`active:\n${time}`;
+
+
+  let array=['wind','breeze','gust','squall','storm','thunderstorm','hurricane','tornado']
+  if(descri.includes("rain") || descri.includes('drizzle') ){
+      document.querySelector('.status').innerHTML=
+      'Rain warning in effect.Take precautions to avoid getting wet and slippery';
+  }
+  else if(array.includes(descri)){
+      document.querySelector('.status').textContent=
+      'Severe storm with strong winds in effect. Take shelter and avoid outdoor activities'
+  }
+  else if(num>=35){
+      document.querySelector('.status').textContent=
+      'Excessive heat warning in effect. Take precautions to avoid heat-related illness.'
+  }
+  else{
+       document.querySelector('.status').textContent='The weather is moderate.'
+
+  }
+}
+function card_info(city,time,temp,icon,description2){
+  document.getElementById('city').textContent=`${city}`;
+  document.getElementById('time').textContent=`${time}`;
+  document.querySelector('.container-parent2 h2').textContent=`${temp}°C`;
+  let image=document.createElement('img');
+  let container=document.querySelector('.container-parent2 .container2');
+  container.appendChild(image);
+  document.querySelector('.container-info p').textContent=`${description2}`;
+  image.src=`http://openweathermap.org/img/wn/${icon}@2x.png`;
+  image.style.width='100px';
+  image.style.position = 'absolute';
+  image.style.right = '8%';
+}
+function card_info2(humidity,wind,Visibility){
+  document.querySelector('.num1').textContent=`${humidity}%`;
+  document.querySelector('.wind').textContent=`${wind}km/h`;
+  document.querySelector('.Visibility').textContent=`${Visibility}km`;
+}
+
+
+function info(){
+let requst = new XMLHttpRequest();
+requst.responseType = 'json';
+requst.open('get','https://api.openweathermap.org/data/2.5/weather?units=metric&q=temara&appid=4ac353ae4c3aeb762531088d2741e0e3&lang=en');
+
+requst.onload = () => {
+  if (requst.status === 200 && requst.response) {
+      let wtr = requst.response;
+      let status1 = wtr.weather[0].description;
+      let temp = wtr.main.temp;
+
+      let unixTime = wtr.dt;          
+      let timezone = wtr.timezone;  
+
+      let localTime = new Date((unixTime + timezone) * 1000);
+      let hours = localTime.getHours();
+      let minutes = localTime.getMinutes();
+
+      let formattedTime = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}`;
+      let Visibilit=wtr.visibility/1000;
+      
+      description(status1, temp, formattedTime);
+      card_info(wtr.name,formattedTime,temp,wtr.weather[0].icon,status1);
+      card_info2(wtr.main.humidity,wtr.wind.speed,Visibilit);
+  } 
+  else {
+      let check = document.querySelector('.container');
+      check.style.marginTop='5%';
+      check.innerHTML = '<p>is not active</p>';
+      check.style.height = '450px';
+      check.style.display = 'flex';
+      check.style.textAlign = 'center';
+      check.style.alignItems = 'center';
+      document.querySelector('.container p').style.width='100%';
+      check.style.textTransform = 'capitalize';
+      check.style.fontSize = '32px';
+      check.style.color = 'rgb(121, 59, 15)';
+  }
+};
+requst.onerror = () => {
+  let check = document.querySelector('.container');
+  check.innerHTML = '<p>is not active</p>';
+  check.style.marginTop='5%';
+  check.style.height = '450px';
+  check.style.display = 'flex';
+  check.style.textAlign = 'center';
+  check.style.alignItems = 'center';
+  document.querySelector('.container p').style.width='100%';
+  check.style.textTransform = 'capitalize';
+  check.style.fontSize = '32px';
+  check.style.color = 'rgb(121, 59, 15)';
+};
+requst.send();
+}
+info();
+
